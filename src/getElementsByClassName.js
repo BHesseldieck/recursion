@@ -4,18 +4,19 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className
-) {
-  // your code here
-  var nodeList = [];
-  function test(node) {
-    if (_(node.classList).contains(className)) {
-      nodeList.push(node);
+var result = [];
+var getElementsByClassName = function(className, ele) {
+
+  ele = ele || document.children;
+  for(var i = 0; i < ele.length; i++) {
+    if(ele[i].className === className) {
+        console.log("ele I", ele[i]);
+        result.push(ele[i]);
     }
-    _(node.childNodes).forEach(function(child) {
-      test(child);
-    });
+    if(ele[i].childNodes.length > 0) {
+      getElementsByClassName(className, ele[i].children);
+    }
   }
-  test(document.body);
-  return nodeList;
+  console.log("result", result);
+  return result;
 };

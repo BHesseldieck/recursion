@@ -1,3 +1,5 @@
+var FILL_ME_IN = 'Fill me in.';
+
 var validStrings, invalidStrings, // used for stringifyJSON and parseJSON specs
   weirdObjects; // used for stringifyJSON spec
 
