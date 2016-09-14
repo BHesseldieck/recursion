@@ -5,15 +5,17 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className) {
-  var nodeList = [];
+  // your code here
+  var result = [];
   function test(node) {
-    if (_(node.classList).contains(className)) {
-      nodeList.push(node);
+    var parts = node.className.split(' ');
+    if (parts.indexOf(className) !== -1) {
+      result.push(node);
     }
-    _(node.childNodes).forEach(function(child) {
-      test(child);
-    });
+    for (var i = 0; i < node.children.length; i++) {
+      test(node.children[i]);
+    }
   }
   test(document.body);
-  return nodeList;
+  return result;
 };
